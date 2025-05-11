@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Launching Soon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background: url('metaverse-avatar-collage-concept_52683-96430.jpg') no-repeat center center/cover;
+      color: white;
+    }
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 1.1rem;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding-top: 60px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px black;
+    }
+    #timer {
+      font-size: 2rem;
+      background-color: rgba(0,0,0,0.6);
+      padding: 1rem 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px #000;
+    }
+    .subscribe-btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: crimson;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>My Launch Site</strong></div>
+    <div>
+      <a href="https://zentech.zentchlk.wuaze.com/index.html" target="_blank">Zentch.lk</a>
+      <a href="https://zentech.zentchlk.wuaze.com/contact.html">Contact Us</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Launching Soon!</h1>
+    <div id="timer">Loading...</div>
+    <button class="subscribe-btn" onclick="window.location.href='https://zentech.zentchlk.wuaze.com/index.html'">Subscribe</button>
+  </div>
+
+  <footer id="contact">
+    Contact us at: support@zentech.com
+  </footer>
+
+  <script>
+    const timerEl = document.getElementById('timer');
+
+    // Set a fixed launch date 30 days from now
+    const now = new Date();
+    const launchDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+    function updateTimer() {
+      const currentTime = new Date().getTime();
+      const distance = launchDate - currentTime;
+
+      if (distance <= 0) {
+        timerEl.innerHTML = "We're live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const milliseconds = distance % 1000;
+
+      timerEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`;
+    }
+
+    setInterval(updateTimer, 50);
+  </script>
+</body>
+</html>
